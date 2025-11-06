@@ -1,0 +1,18 @@
+{
+  "name": "semester_a",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "express": "^5.1.0",
+    "i": "^0.3.7",
+    "nodemon": "^3.1.10"
+  }
+}
