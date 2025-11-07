@@ -1,5 +1,5 @@
 {
-  "name": "semester_a",
+  "name": "semester_a_year2_node",
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
@@ -11,6 +11,7 @@
   "license": "ISC",
   "description": "",
   "dependencies": {
+    "dotenv": "^17.2.3",
     "express": "^5.1.0",
     "i": "^0.3.7",
     "nodemon": "^3.1.10"

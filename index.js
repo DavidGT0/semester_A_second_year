@@ -1,11 +1,15 @@
 const express = require('express');
+require('dotenv').config();
 const app = express();
-const port = 4567;
+const port = process.env.PORT;
+const api = process.env.HOST;
 
-app.listen(port, () => {
-    console.log(`Server started on port ${port}`);
-});
+app.use(express.static(__dirname));
 
 app.get("/", (req, res) => {
-    res.send("Welcome to the server!");
+    res.sendFile(__dirname + '/public/index.html');
+});
+
+app.listen(port, () => {
+    console.log(`Server started on port http://${api}:${port}`);
 });
