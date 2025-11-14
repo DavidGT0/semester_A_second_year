@@ -1,2 +1,2 @@
-let greating = "Good Morning beaches";
+let greating = "Good Morning biach";
 document.getElementById("greating").innerHTML = greating;
