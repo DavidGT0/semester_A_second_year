@@ -1,13 +1,15 @@
-const {getAll} = require('../model/users_M.js');
-const {getUserByIdFromDB} = require("../model/users_M");
+const {getAllFromDB} = require('../model/users_M.js');
+const {deleteUserFromDB} = require("../model/users_M.js");
+const {getOneUserFromDB} = require("../model/users_M.js");
 
 async function getAllUsers(req, res) {
     try {
-        let users = await getAll();
+        let users = await getAllFromDB();
         if(users.length == 0){
-            return res.status(400).json({message: "No users found."});
+            res.status(400).json({message: "No users found."});
+        }else {
+            res.status(200).json({message: "ok", users});
         }
-        res.status(200).json(users);
     }catch(err) {
         res.status(500).json({error: "Server error"});
     }
@@ -15,7 +17,7 @@ async function getAllUsers(req, res) {
 
 async function getUserById(req, res) {
    try{
-       let user = await getOneUser(req.id);
+       let user = await getOneUserFromDB(req.id);
        if(!user){
            return res.status(404).json({message: "No user with this ID."});
        }
@@ -25,6 +27,15 @@ async function getUserById(req, res) {
    }
 }
 
+async function deleteUser(req, res) {
+    try {
+        const users = await deleteUserFromDB(req.params.id);
+        res.status(200).json({message: "User deleted successfully."});
+    }catch(err) {
+        res.status(500).json({error: "Server error"});
+    }
+}
+
 module.exports = {
-    getAllUsers,getUserById
+    getAllUsers,getUserById,deleteUser
 }
