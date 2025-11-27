@@ -1,2 +1,2 @@
-let greating = "Good Morning biach";
-document.getElementById("greating").innerHTML = greating;
+let greating = "בוקר טוב";
+document.getElementById('greating').innerHTML = greating;

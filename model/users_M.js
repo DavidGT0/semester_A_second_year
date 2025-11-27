@@ -1,26 +1,35 @@
 const db = require('../config/db_config');
 
-async function getAllFromDB(){
+async function getAll(){
     let sql = `SELECT id,name,email FROM users`;
-    console.log(sql);
     let [rows] = await db.query(sql);
-    console.log(rows);
-
     return rows;
 }
 
-async function getOneUserFromDB(id) {
-    let sql = `SELECT id, name, email FROM users WHERE id = ?`;
-    let [result] = await db.query(sql, [id]);
-    return result;
+async function getOne(id){
+    let sql = `SELECT id,name,email FROM users WHERE id = ?`;
+    let [result] = await db.query(sql,[id]);
+    return result[0];
 }
 
-async function deleteUserFromDB(id) {
+async function remove(id){
     let sql = `DELETE FROM users WHERE id = ?`;
-    let [result] = await db.query(sql, [id]);
-    return result;
+    let [result] = await db.query(sql,[id]);
+    return result.affectedRows;
 }
 
-module.exports = {
-    getAllFromDB,getOneUserFromDB,deleteUserFromDB
+async function update(id,user){
+    let keys = Object.keys(user);
+    let values = Object.values(user);
+    let set = keys.map(k=>`${k}=?`).join(',');
+    let sql = `UPDATE users SET ${set} WHERE id = ?`;
+    let [result] = await db.query(sql,[...values,id]);
+    return result.affectedRows;
+}
+
+module.exports ={
+    getAll,
+    getOne,
+    remove,
+    update
 }

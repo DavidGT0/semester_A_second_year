@@ -7,13 +7,13 @@ const pool = mysql.createPool({
     database: process.env.DB_NAME,
     user: process.env.DB_USER,
     password: process.env.DB_PASS,
+    port: process.env.DB_PORT,
     dateStrings: true
 });
 
 pool.getConnection((err, connection) => {
     if (err) {
         console.error('❌ Error connecting to MySQL:', err.message);
-        return;
     } else {
         console.log('✅ MySQL connected successfully');
         connection.release();

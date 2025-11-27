@@ -1,14 +1,12 @@
+
 const express = require('express');
 const router = express.Router();
-const {getAllUsers} = require('../controller/users_C.js');
-const {isValidId} = require('../middelware/users_MID.js');
-const {getUserById} = require('../controller/users_C.js');
-const {deleteUser} = require('../controller/users_C.js');
+const {getAllUsers,getOneUser,deleteUser,updateUser} = require('../controller/users_C.js');
+const {isValidId,valuesToEdit} = require('../middelware/users_MID');
 
-router.get('/', getAllUsers);
-
-router.get('/:id',isValidId, getUserById);
-
-router.delete('/:id',isValidId, deleteUser);
+router.get('/',getAllUsers);
+router.get('/:id',isValidId,getOneUser);
+router.delete('/:id',isValidId,deleteUser);
+router.patch('/:id',isValidId,valuesToEdit,updateUser);
 
 module.exports = router;
