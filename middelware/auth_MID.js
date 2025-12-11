@@ -1,5 +1,5 @@
 const bcrypt = require('bcrypt');
-const { getUserById } = require('../model/auth_M');
+const jwt = require('jsonwebtoken');
 
 function valuesToAdd(req,res,next){
     let {name,email,userName,pass} = req.body;
@@ -9,19 +9,43 @@ function valuesToAdd(req,res,next){
     next();
 }
 
+function valuesToLogin(req,res,next){
+    let {userName,pass} = req.body;
+    if(!userName || !pass){
+        return res.status(400).json({message:"חסרים נתונים"});
+    }
+    next();
+}
+
 async function encrypPass(req,res,next){
     try{
         let pass = req.body.pass;
         let hashPass = await bcrypt.hash(pass,10);
-        req.body.pass = hashPass;
-
+        req.pass = hashPass;
         next();
     }catch(err){
-        res.status(500).json({message: "error"})
+        console.error(err);
+        res.status(500).json({message:"Server error"});
+    }
+}
+function isLoggedIn(req,res,next){
+    let token = req.cookies.jwt;
+    if(!token){
+        res.status(401).json({message:"please login"});
+    }
+    try{
+        let payload = jwt.verify(token, process.env.SECRET_KEY);
+        req.user = payload;
+        next();
+    }catch (err){
+        console.error(err);
+        res.status(500).json({message:"server error"});
     }
 }
 
 module.exports = {
     valuesToAdd,
-    encrypPass
-};
+    encrypPass,
+    valuesToLogin,
+    isLoggedIn
+}
