@@ -29,41 +29,40 @@ async function register(req,res) {
     }
 }
 
-
-async function login(req, res, next) {
-    try {
+async function login(req,res,next) {
+    try{
         let user = await getByUserName(req.body.userName);
-        if (!user) {
-            return res.status(400).json({message: "שם משתמש או סיסמה שגויים"});
+        if(!user){
+            return res.status(400).json({message:"שם משתמש או סיסמה שגויים"});
         }
-        let isMatch = await bcrypt.compare(req.body.pass, user.pass);
-        if (!isMatch) {
-            return res.status(400).json({message: "שם משתמש או סיסמה שגויים"});
+        let isMatch = await bcrypt.compare(req.body.pass,user.pass);
+        if(!isMatch){
+            return res.status(400).json({message:"שם משתמש או סיסמה שגויים"});
         }
         req.user = user;
         next();
-    } catch (err) {
+    }catch(err){
         console.error(err);
-        res.status(500).json({message: "Server error"});
+        res.status(500).json({message:"Server error"});
     }
 }
 
-function createJwt(req, res) {
-    try {
+function createJwt(req,res) {
+    try{
         let user = req.user;
         let token = jwt.sign(
-            {id: user.id, name: user.name},
+            {id:user.id,name:user.name},
             process.env.SECRET_KEY,
-            {expiresIn: '3h'}
+            {expiresIn:'3h'}
         );
-        res.cookie('jwt', token, {maxAge: 1000 * 60 * 60 * 3}).status(200).json({message: "התחברת בהצלחה"});
-    } catch (err) {
+        res.cookie('jwt',token,{maxAge:1000*60*60*3}).status(200).json({message:"התחברת בהצלחה"});
+    }catch(err){
         console.error(err);
-        res.status(500).json({message: "Server error"});
+        res.status(500).json({message:"Server error"});
     }
 }
 
-module.exports = {
+module.exports ={
     register,
     login,
     createJwt

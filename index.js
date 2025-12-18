@@ -12,5 +12,6 @@ app.get('/',(req,res)=>{res.sendFile(__dirname+'/public/index.html')})
 app.use('/users',require('./routes/users_R'));
 app.use('/auth',require('./routes/auth_R'));
 app.use('/categories',require('./routes/categories_R'));
+app.use('/tasks',require('./routes/tasks_R'));
 
 app.listen(port,()=>{console.log(`http://${api}:${port}`)})
