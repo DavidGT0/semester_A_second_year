@@ -20,7 +20,7 @@ function valuesToEdit(req,res,next){
     if(req.body.text){
         obj.text = req.body.text;
     }
-    if(req.body.isDone){
+    if(req.body.isDone != undefined){
         obj.is_done = req.body.isDone;
     }
     let keys = Object.keys(obj);
