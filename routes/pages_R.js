@@ -3,5 +3,7 @@ const router = express.Router();
 const path = require('path');
 
 router.get('/',(req,res)=>{res.sendFile(path.join(__dirname,"..","public","pages","index.html"))})
+router.get('/reg',(req,res)=>{res.sendFile(path.join(__dirname,"..","public","pages","reg.html"))})
+router.get('/login',(req,res)=>{res.sendFile(path.join(__dirname,"..","public","pages","login.html"))})
 
 module.exports = router;
