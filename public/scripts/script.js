@@ -1,7 +1,8 @@
 let greating = "Hello ";
 greating += localStorage.getItem('name');
 document.getElementById('greating').innerHTML = greating;
-allCategories = [];
+let allCategories = [];
+let allTasks = [];
 
 async function getTasks() {
     try {
@@ -15,6 +16,7 @@ async function getTasks() {
             alert(data.message);
             return;
         }
+        allTasks = data;
         createTable(data);
     } catch (err) {
         alert(err)
@@ -33,10 +35,10 @@ async function getCategories() {
             alert(data.message);
             return;
         }
-        for(let c of data){
+        for (let c of data) {
             allCategories[c.id] = c;
         }
-        SelectCat();
+        createSelect(allCategories);
     } catch (err) {
         alert(err)
     }
@@ -48,6 +50,7 @@ function createTable(data) {
         if (obj) {
             let isChecked = obj.is_done ? "checked" : "";
             let rowClass = obj.is_done ? "class='rowClass'" : "";
+            let catName = allCategories[obj.category_id] ? allCategories[obj.category_id].name : '--';
             txt += `<tr ${rowClass}>`;
             txt += `<td><input type="checkbox" ${isChecked} onchange="taskDone(${obj.id},this)"></td>`;
             txt += `<td>${obj.text}</td>`;
@@ -58,6 +61,26 @@ function createTable(data) {
         }
     }
     document.getElementById('myTable').innerHTML = txt;
+}
+
+function createSelect(data) {
+    let txt = `<option value="0">All</option>`;
+    for (obj of data) {
+        if (obj) {
+            txt += `<option value="${obj.id}">${obj.name}</option>`;
+        }
+    }
+    document.getElementById('mySelect').innerHTML = txt;
+}
+
+function sortTable() {
+    let val = document.getElementById('mySelect').value;
+    if (val == 0) {
+        createTable(allTasks);
+    } else {
+        let sorted = allTasks.filter(task => task.category_id == val);
+        createTable(sorted);
+    }
 }
 
 async function taskDone(id, elm) {
@@ -74,27 +97,78 @@ async function taskDone(id, elm) {
     }
 }
 
-function SelectCat(){
-    let select = document.getElementById('tasksSelect');
-    select.innerHTML = '<option value="">View All Tasks</option>';
-    allCategoris.forEach(category =>{
-        const option = document.createElement('option');
-        option.value = category.id;
-        option.textContent = category.name;
-        select.appendChild(option);
-    })
-    select.addEventListener('change', filterTasks);
+async function taskToEdit(id) {
+    try {
+        let response = await fetch(`/tasks/${id}`);
+        let data = await response.json();
+        if(!response.ok){
+            alert(data.message);
+        }else{
+            document.getElementById('id').value = data.id;
+            document.getElementById('text').value = data.text;
+        }
+    } catch (err) {
+        alert(err)
+    }
 }
 
-function filterTasks() {
-    let select = document.getElementById('tasksSelect');
-    let selectedCategoryId = select.value;
+async function editTask(id) {
+    try {
+        let text = document.getElementById('text').value;
+        let response = await fetch(`/tasks/${id}`,{
+            method:'PATCH',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify({text})
+        })
+        getTasks();
+        document.getElementById('text').value = "";
+    } catch (err) {
+        alert(err)
+    }
+}
 
-    if (selectedCategoryId === '') {
-        createTable(allTasks);
-    } else {
-        let filteredTasks = allTasks.filter(task => task.category_id == selectedCategoryId);
-        createTable(filteredTasks);
+function addOrEdit(){
+    let id = document.getElementById('id').value;
+    if(id){
+        editTask(id);
+    }else{
+        addTask();
+    }
+}
+
+async function addTask() {
+    try {
+        let text = document.getElementById('text').value;
+        console.log(text);
+
+        let catId = document.getElementById('mySelect').value;
+        if(catId == 0){
+            catId = null;
+        }
+        let response = await fetch('/tasks',{
+            method:'POST',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify({text,catId})
+        })
+        getTasks();
+        document.getElementById('text').value = "";
+    } catch (err) {
+        alert(err)
+    }
+}
+
+async function deleteTask(id) {
+    try {
+        let response = await fetch(`/tasks/${id}`,{
+            method:'DELETE'
+        })
+        let data = await response.json();
+        if(!response.ok){
+            alert(data.message);
+        }
+        getTasks();
+    } catch (err) {
+        alert(err)
     }
 }
 

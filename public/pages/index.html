@@ -7,20 +7,29 @@
     <link rel="stylesheet" href="../styles/styles.css">
 </head>
 <body>
-    <h1 id="greating"></h1>
-    <hr>
-    <table border="1">
-        <thead>
-        <tr>
-            <th></th>
-            <th>Text</th>
-            <th>Category</th>
-            <th></th>
-            <th></th>
-        </tr>
-        </thead>
-        <tbody id="myTable"></tbody>
-    </table>
-    <script src="../scripts/script.js"></script>
+<h1 id="greating"></h1>
+<a href="/cat">All categories</a>
+<hr>
+<select onchange="sortTable()" id="mySelect"></select>
+<table border="1">
+    <thead>
+    <tr>
+        <div>
+            <input id="id" type="hidden">
+            <label for="text">Text:</label>
+            <input id="text">
+            <button onclick="addOrEdit()">Send</button>
+        </div>
+        <hr>
+        <th></th>
+        <th>Text</th>
+        <th>Category</th>
+        <th></th>
+        <th></th>
+    </tr>
+    </thead>
+    <tbody id="myTable"></tbody>
+</table>
+<script src="../scripts/script.js"></script>
 </body>
 </html>

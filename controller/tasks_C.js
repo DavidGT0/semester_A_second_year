@@ -16,7 +16,7 @@ async function addTask(req,res) {
     try{
         let text = req.body.text;
         let userId = req.user.id;
-        let catId = req.user.catId || null;
+        let catId = req.body.catId || null;
 
         let taskId = await add({text,userId,catId});
         if(!taskId){
