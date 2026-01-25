@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="he">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -14,15 +14,23 @@
 <div>
     <h2>עריכת/הוספת משתמש</h2>
     <input id="id" type="hidden">
+
     <label for="name">שם:</label>
     <input id="name" type="text">
     <br>
+
+    <label for="email">אימייל:</label> 
+    <input id="email" type="email">
+    <br>
+
     <label for="userName">שם משתמש:</label>
     <input id="userName" type="text">
     <br>
+
     <label for="pass">סיסמה:</label>
-    <input id="pass" type="password">
+    <input id="pass" type="password" placeholder="חובה למשתמש חדש">
     <br>
+
     <button onclick="addOrEditUser()">שמור</button>
     <button onclick="clearForm()">נקה</button>
 </div>
@@ -35,6 +43,7 @@
     <tr>
         <th>ID</th>
         <th>שם</th>
+        <th>אימייל</th> 
         <th>שם משתמש</th>
         <th>פעולות</th>
     </tr>
