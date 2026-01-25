@@ -29,18 +29,17 @@ async function encrypPass(req,res,next){
     }
 }
 
-function isLoggedIn(req,res,next){
-    let token = req.cookies.jwt;    
-    if(!token){
-        return res.status(401).json({message:"נא להתחבר למערכת"});
-    }
-    try{
-        let payload = jwt.verify(token,process.env.SECRET_KEY);    
-        req.user = payload;    
+function isLoggedIn(req, res, next) {
+    try {
+        let token = req.cookies.jwt;
+        if (!token) {
+            return res.status(401).json({message: "לא מחובר"});
+        }
+        let decoded = jwt.verify(token, process.env.SECRET_KEY);
+        req.user = decoded;
         next();
-    }catch(err){
-        console.error(err);
-        res.status(500).json({message:"Server error"});
+    } catch (err) {
+        return res.status(401).json({message: "לא מחובר"});
     }
 }
 

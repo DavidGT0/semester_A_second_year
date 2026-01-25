@@ -4,8 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9da584e7-5d54-4bc9-974e-2fb4d9c0822d" name="Changes" comment="יצירת דף HTML לניהול קטגוריות">
-      <change afterPath="$PROJECT_DIR$/public/scripts/categories_script.js" afterDir="false" />
+    <list default="true" id="9da584e7-5d54-4bc9-974e-2fb4d9c0822d" name="Changes" comment="עידכון קובץ model / categories">
+      <change beforePath="$PROJECT_DIR$/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/middelware/auth_MID.js" beforeDir="false" afterPath="$PROJECT_DIR$/middelware/auth_MID.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/pages/categories.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/pages/categories.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/pages/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/pages/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/pages/users.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/pages/users.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/scripts/login_script.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/scripts/login_script.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/pages_R.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/pages_R.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -120,7 +126,7 @@
       <workItem from="1769084762895" duration="2560000" />
       <workItem from="1769093162719" duration="1680000" />
       <workItem from="1769152385770" duration="576000" />
-      <workItem from="1769358311166" duration="3012000" />
+      <workItem from="1769358311166" duration="5197000" />
     </task>
     <task id="LOCAL‎-00001" summary="updated cods">
       <option name="closed" value="true" />
@@ -194,7 +200,23 @@
       <option name="project" value="LOCAL‎" />
       <updated>1769361072505</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL‎-00010" summary="יצירת דף JS לניהול קטגוריות">
+      <option name="closed" value="true" />
+      <created>1769361380839</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL‎-00010" />
+      <option name="project" value="LOCAL‎" />
+      <updated>1769361380839</updated>
+    </task>
+    <task id="LOCAL‎-00011" summary="עידכון קובץ model / categories">
+      <option name="closed" value="true" />
+      <created>1769361603498</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL‎-00011" />
+      <option name="project" value="LOCAL‎" />
+      <updated>1769361603498</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -220,6 +242,8 @@
     <MESSAGE value="הוספת דף HTML לניהול משתמשים" />
     <MESSAGE value="הוספת דף JS לניהול משתמשים" />
     <MESSAGE value="יצירת דף HTML לניהול קטגוריות" />
-    <option name="LAST_COMMIT_MESSAGE" value="יצירת דף HTML לניהול קטגוריות" />
+    <MESSAGE value="יצירת דף JS לניהול קטגוריות" />
+    <MESSAGE value="עידכון קובץ model / categories" />
+    <option name="LAST_COMMIT_MESSAGE" value="עידכון קובץ model / categories" />
   </component>
 </project>
