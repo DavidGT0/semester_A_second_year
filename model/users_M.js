@@ -1,4 +1,3 @@
-
 const db = require('../config/db_config');
 
 async function getAll(){
@@ -14,15 +13,10 @@ async function getOne(id){
 }
 
 async function remove(id){
-    // מחיקת כל המשימות של המשתמש
-    let sqlTasks = `DELETE FROM tasks WHERE user_id = ?`;
-    await db.query(sqlTasks,[id]);
+    await db.query(`DELETE FROM tasks WHERE user_id = ?`, [id]);
 
-    // מחיקת כל הקטגוריות של המשתמש
-    let sqlCategories = `DELETE FROM categories WHERE user_id = ?`;
-    await db.query(sqlCategories,[id]);
+    await db.query(`DELETE FROM categories WHERE user_id = ?`, [id]);
 
-    // מחיקת המשתמש
     let sql = `DELETE FROM users WHERE id = ?`;
     let [result] = await db.query(sql,[id]);
     return result.affectedRows;

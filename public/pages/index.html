@@ -3,34 +3,51 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>To-Do List</title>
     <link rel="stylesheet" href="../styles/styles.css">
 </head>
 <body>
-<h1 id="greating"></h1>
-<a href="/manage-users">Manage Users</a> | <a href="/manage-categories">Manage Categories</a>
+<div style="display: flex; justify-content: space-between; align-items: center;">
+    <h1 id="greating">Hello</h1>
+    <button onclick="logout()">התנתק</button>
+</div>
+
+<nav>
+    <a href="/manage-users">Manage Users</a> | <a href="/manage-categories">Manage Categories</a>
+</nav>
 <hr>
-<select onchange="sortTable()" id="mySelect"></select>
-<table border="1">
+
+<div style="border: 1px solid #ccc; padding: 10px; margin-bottom: 20px;">
+    <h3>Add New Task</h3>
+    <input id="id" type="hidden">
+
+    <label for="text">Task:</label>
+    <input id="text" placeholder="What to do?">
+
+    <label for="categorySelect">Category:</label>
+    <select id="categorySelect"></select>
+
+    <button onclick="addOrEdit()">Save Task</button>
+</div>
+
+<div style="margin-bottom: 10px;">
+    <label for="filterSelect">Filter Tasks by Category:</label>
+    <select onchange="sortTable()" id="filterSelect"></select>
+</div>
+
+<table border="1" style="width: 100%;">
     <thead>
     <tr>
-        <div>
-            <input id="id" type="hidden">
-            <label for="text">Text:</label>
-            <input id="text">
-            <button onclick="addOrEdit()">Send</button>
-            <button onclick="logout()">התנתק</button>
-        </div>
-        <hr>
-        <th></th>
-        <th>Text</th>
+        <th>Done</th>
+        <th>Task</th>
         <th>Category</th>
-        <th></th>
-        <th></th>
+        <th>Delete</th>
+        <th>Edit</th>
     </tr>
     </thead>
     <tbody id="myTable"></tbody>
 </table>
+
 <script src="../scripts/script.js"></script>
 </body>
 </html>

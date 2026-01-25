@@ -19,11 +19,9 @@ async function getOne(catId,userId){
 }
 
 async function remove(catId,userId){
-    // מחיקת כל המשימות המשוייכות לקטגוריה
     let sqlTasks = `DELETE FROM tasks WHERE category_id = ? AND user_id = ?`;
     await db.query(sqlTasks,[catId,userId]);
 
-    // מחיקת הקטגוריה
     let sql = `DELETE FROM categories WHERE id = ? AND user_id = ?`;
     let [result] = await db.query(sql,[catId,userId]);
     return result.affectedRows;

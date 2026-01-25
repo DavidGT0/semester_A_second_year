@@ -14,16 +14,18 @@ async function addCategory(req,res) {
     try{
         let name = req.body.name;
         let userId = req.user.id;
+
         if (!userId) {
             return res.status(400).json({message: "User ID missing"});
         }
+
         let categoryId = await add({name,userId});
         if(!categoryId){
             return res.status(500).json({message:"Server error"});
         }
         res.status(201).json({message:"נוסף בהצלחה"});
     }catch(err){
-        console.error(err);
+        console.error('Error in addCategory:', err);
         res.status(500).json({message:"Server error"});
     }
 }
@@ -36,22 +38,20 @@ async function getCategory(req,res) {
         }
         res.status(200).json(category);
     }catch(err){
+        console.error('Error in getCategory:', err);
         res.status(500).json({message:"Server error"})
     }
 }
 
 async function deleteCategory(req,res) {
     try{
-        console.log(req.id);
-        console.log(req.user.id);
-        
         let affectedRows = await remove(req.id,req.user.id);
         if(!affectedRows){
             return res.status(400).json({message:`Category ${req.id} not found!`})
         }
         res.status(200).json({message:"deleted!"});
     }catch(err){
-        console.error(err);
+        console.error('Error in deleteCategory:', err);
         res.status(500).json({message:"Server error"})
     }
 }
@@ -67,6 +67,7 @@ async function updateCategory(req,res) {
         }
         res.status(200).json({message:"updated!"});
     }catch(err){
+        console.error('Error in updateCategory:', err);
         res.status(500).json({message:"Server error"})
     }
 }
