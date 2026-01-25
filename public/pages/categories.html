@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="he">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Categories Management</title>
+    <link rel="stylesheet" href="../styles/styles.css">
+</head>
+<body>
+<h1>ניהול קטגוריות</h1>
+<a href="/">חזרה לדף הראשי</a> | <a href="/users">ניהול משתמשים</a>
+<hr>
+
+<div>
+    <h2>עריכת/הוספת קטגוריה</h2>
+    <input id="id" type="hidden">
+    <label for="name">שם קטגוריה:</label>
+    <input id="name" type="text">
+    <br>
+    <button onclick="addOrEditCategory()">שמור</button>
+    <button onclick="clearForm()">נקה</button>
+</div>
+
+<hr>
+
+<h2>רשימת קטגוריות</h2>
+<table border="1">
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>שם</th>
+        <th>פעולות</th>
+    </tr>
+    </thead>
+    <tbody id="categoriesTable"></tbody>
+</table>
+
+<script src="../scripts/categories_script.js"></script>
+</body>
+</html>

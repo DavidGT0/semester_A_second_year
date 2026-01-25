@@ -4,8 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9da584e7-5d54-4bc9-974e-2fb4d9c0822d" name="Changes" comment="הוספת לוגין ליוזרס ולקטגוריס">
-      <change afterPath="$PROJECT_DIR$/public/pages/users.html" afterDir="false" />
+    <list default="true" id="9da584e7-5d54-4bc9-974e-2fb4d9c0822d" name="Changes" comment="הוספת דף JS לניהול משתמשים">
+      <change afterPath="$PROJECT_DIR$/public/pages/categories.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -120,7 +120,7 @@
       <workItem from="1769084762895" duration="2560000" />
       <workItem from="1769093162719" duration="1680000" />
       <workItem from="1769152385770" duration="576000" />
-      <workItem from="1769358311166" duration="2322000" />
+      <workItem from="1769358311166" duration="2703000" />
     </task>
     <task id="LOCAL‎-00001" summary="updated cods">
       <option name="closed" value="true" />
@@ -170,7 +170,23 @@
       <option name="project" value="LOCAL‎" />
       <updated>1769360065285</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL‎-00007" summary="הוספת דף HTML לניהול משתמשים">
+      <option name="closed" value="true" />
+      <created>1769360747304</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL‎-00007" />
+      <option name="project" value="LOCAL‎" />
+      <updated>1769360747304</updated>
+    </task>
+    <task id="LOCAL‎-00008" summary="הוספת דף JS לניהול משתמשים">
+      <option name="closed" value="true" />
+      <created>1769360960927</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL‎-00008" />
+      <option name="project" value="LOCAL‎" />
+      <updated>1769360960927</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -193,6 +209,8 @@
     <MESSAGE value="new updated new" />
     <MESSAGE value="new updated new new" />
     <MESSAGE value="הוספת לוגין ליוזרס ולקטגוריס" />
-    <option name="LAST_COMMIT_MESSAGE" value="הוספת לוגין ליוזרס ולקטגוריס" />
+    <MESSAGE value="הוספת דף HTML לניהול משתמשים" />
+    <MESSAGE value="הוספת דף JS לניהול משתמשים" />
+    <option name="LAST_COMMIT_MESSAGE" value="הוספת דף JS לניהול משתמשים" />
   </component>
 </project>
