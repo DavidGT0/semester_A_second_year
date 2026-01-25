@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Users Management</title>
+    <link rel="stylesheet" href="../styles/styles.css">
+</head>
+<body>
+<h1>ניהול משתמשים</h1>
+<a href="/">חזרה לדף הראשי</a> | <a href="/categories">ניהול קטגוריות</a>
+<hr>
+
+<div>
+    <h2>עריכת/הוספת משתמש</h2>
+    <input id="id" type="hidden">
+    <label for="name">שם:</label>
+    <input id="name" type="text">
+    <br>
+    <label for="userName">שם משתמש:</label>
+    <input id="userName" type="text">
+    <br>
+    <label for="pass">סיסמה:</label>
+    <input id="pass" type="password">
+    <br>
+    <button onclick="addOrEditUser()">שמור</button>
+    <button onclick="clearForm()">נקה</button>
+</div>
+
+<hr>
+
+<h2>רשימת משתמשים</h2>
+<table border="1">
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>שם</th>
+        <th>שם משתמש</th>
+        <th>פעולות</th>
+    </tr>
+    </thead>
+    <tbody id="usersTable"></tbody>
+</table>
+
+<script src="../scripts/users_script.js"></script>
+</body>
+</html>
