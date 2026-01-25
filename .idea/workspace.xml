@@ -4,8 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9da584e7-5d54-4bc9-974e-2fb4d9c0822d" name="Changes" comment="הוספת דף JS לניהול משתמשים">
-      <change afterPath="$PROJECT_DIR$/public/pages/categories.html" afterDir="false" />
+    <list default="true" id="9da584e7-5d54-4bc9-974e-2fb4d9c0822d" name="Changes" comment="יצירת דף HTML לניהול קטגוריות">
+      <change afterPath="$PROJECT_DIR$/public/scripts/categories_script.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -19,8 +19,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="JavaScript File" />
         <option value="HTML File" />
+        <option value="JavaScript File" />
       </list>
     </option>
   </component>
@@ -120,7 +120,7 @@
       <workItem from="1769084762895" duration="2560000" />
       <workItem from="1769093162719" duration="1680000" />
       <workItem from="1769152385770" duration="576000" />
-      <workItem from="1769358311166" duration="2703000" />
+      <workItem from="1769358311166" duration="3012000" />
     </task>
     <task id="LOCAL‎-00001" summary="updated cods">
       <option name="closed" value="true" />
@@ -186,7 +186,15 @@
       <option name="project" value="LOCAL‎" />
       <updated>1769360960927</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL‎-00009" summary="יצירת דף HTML לניהול קטגוריות">
+      <option name="closed" value="true" />
+      <created>1769361072505</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL‎-00009" />
+      <option name="project" value="LOCAL‎" />
+      <updated>1769361072505</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -211,6 +219,7 @@
     <MESSAGE value="הוספת לוגין ליוזרס ולקטגוריס" />
     <MESSAGE value="הוספת דף HTML לניהול משתמשים" />
     <MESSAGE value="הוספת דף JS לניהול משתמשים" />
-    <option name="LAST_COMMIT_MESSAGE" value="הוספת דף JS לניהול משתמשים" />
+    <MESSAGE value="יצירת דף HTML לניהול קטגוריות" />
+    <option name="LAST_COMMIT_MESSAGE" value="יצירת דף HTML לניהול קטגוריות" />
   </component>
 </project>
