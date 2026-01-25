@@ -1,13 +1,12 @@
+
 const {getAll,getOne,remove,update} = require('../model/users_M.js');
 
 async function getAllUsers(req,res) {
     try{
         let users = await getAll();
-        if(users.length == 0){
-            return res.status(400).json({message:"אין נתונים"})
-        }
         res.status(200).json(users)
     }catch(err){
+        console.error('Error in getAllUsers:', err);
         res.status(500).json({message:"Server error"})
     }
 }
@@ -20,6 +19,7 @@ async function getOneUser(req,res) {
         }
         res.status(200).json(user);
     }catch(err){
+        console.error('Error in getOneUser:', err);
         res.status(500).json({message:"Server error"})
     }
 }
@@ -32,6 +32,11 @@ async function deleteUser(req,res) {
         }
         res.status(200).json({message:"deleted!"});
     }catch(err){
+        console.error('Error in deleteUser:', err);
+        // בדיקה אם זו שגיאת Foreign Key
+        if(err.code === 'ER_ROW_IS_REFERENCED_2'){
+            return res.status(400).json({message:"לא ניתן למחוק משתמש עם קטגוריות או משימות קיימות"});
+        }
         res.status(500).json({message:"Server error"})
     }
 }
@@ -44,6 +49,7 @@ async function updateUser(req,res) {
         }
         res.status(200).json({message:"updated!"});
     }catch(err){
+        console.error('Error in updateUser:', err);
         res.status(500).json({message:"Server error"})
     }
 }

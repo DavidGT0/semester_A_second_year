@@ -1,3 +1,4 @@
+
 document.addEventListener('DOMContentLoaded', loadUsers);
 
 async function loadUsers() {
@@ -7,24 +8,51 @@ async function loadUsers() {
             window.location.href = '/login';
             return;
         }
+
+        // בדיקה שהתשובה תקינה
+        if (!response.ok) {
+            let errorData = await response.json();
+            alert('שגיאה: ' + (errorData.message || 'שגיאה לא ידועה'));
+            return;
+        }
+
         let data = await response.json();
+
+        // בדיקה שהנתונים הם מערך
+        if (!Array.isArray(data)) {
+            console.error('Data received:', data);
+            alert('התקבלו נתונים לא תקינים מהשרת');
+            return;
+        }
+
         displayUsers(data);
     } catch (err) {
-        alert('שגיאה בטעינת משתמשים: ' + err);
+        console.error('Error loading users:', err);
+        alert('שגיאה בטעינת משתמשים: ' + err.message);
     }
 }
 
 function displayUsers(users) {
     let tableBody = document.getElementById('usersTable');
     tableBody.innerHTML = '';
+
+    if (users.length === 0) {
+        tableBody.innerHTML = '<tr><td colspan="4">אין משתמשים להצגה</td></tr>';
+        return;
+    }
+
     users.forEach(user => {
+        // הגנה מפני שמות עם גרשיים
+        let safeName = (user.name || '').replace(/'/g, "\\'");
+        let safeUserName = (user.userName || '').replace(/'/g, "\\'");
+
         let row = `
             <tr>
                 <td>${user.id}</td>
                 <td>${user.name}</td>
                 <td>${user.userName}</td>
                 <td>
-                    <button onclick="editUser(${user.id}, '${user.name}', '${user.userName}')">ערוך</button>
+                    <button onclick="editUser(${user.id}, '${safeName}', '${safeUserName}')">ערוך</button>
                     <button onclick="deleteUser(${user.id})">מחק</button>
                 </td>
             </tr>
@@ -76,7 +104,8 @@ async function addOrEditUser() {
         clearForm();
         loadUsers();
     } catch (err) {
-        alert('שגיאה: ' + err);
+        console.error('Error saving user:', err);
+        alert('שגיאה: ' + err.message);
     }
 }
 
@@ -93,6 +122,7 @@ async function deleteUser(id) {
         alert(data.message);
         loadUsers();
     } catch (err) {
-        alert('שגיאה במחיקה: ' + err);
+        console.error('Error deleting user:', err);
+        alert('שגיאה במחיקה: ' + err.message);
     }
 }

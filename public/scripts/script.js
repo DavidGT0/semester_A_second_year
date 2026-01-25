@@ -172,5 +172,15 @@ async function deleteTask(id) {
     }
 }
 
+async function logout() {
+    try {
+        await fetch('/auth/logout');
+        localStorage.removeItem('name'); // ניקוי שם המשתמש
+        window.location.href = '/login';
+    } catch (err) {
+        console.error('Logout error:', err);
+    }
+}
+
 getCategories();
 getTasks();
